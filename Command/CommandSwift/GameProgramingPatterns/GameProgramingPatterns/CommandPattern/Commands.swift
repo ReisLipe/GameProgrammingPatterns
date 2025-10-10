@@ -1,5 +1,11 @@
+//
+//  Commands.swift
+//  GameProgramingPatterns
+//
+//  Created by Joao Filipe Reis Justo da Silva on 28/09/25.
+//
+
 // MARK: - Command Protocol
-// I still need to implement the decoupling
 protocol Command {
     func execute()
 }
@@ -23,4 +29,17 @@ class SwapWeaponCommand: Command {
 class LurchCommand: Command {
     func execute() { lurch() }
     func lurch() { print("Lurching... Au!") }
+}
+
+enum CommandName: String, CaseIterable {
+    case jump, fire, swap, lurch
+    
+    func make() -> Command {
+        switch self {
+        case .jump:  return JumpCommand()
+        case .fire:  return FireWeaponCommand()
+        case .swap:  return SwapWeaponCommand()
+        case .lurch: return LurchCommand()
+        }
+    }
 }

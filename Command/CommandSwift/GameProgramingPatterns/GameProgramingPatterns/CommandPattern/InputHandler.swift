@@ -1,5 +1,24 @@
-enum Button {
+//
+//  InputHandler.swift
+//  GameProgramingPatterns
+//
+//  Created by Joao Filipe Reis Justo da Silva on 28/09/25.
+//
+
+enum Button: String, CaseIterable {
     case X, Y, A, B
+    
+    init?(from input: String) {
+        switch input.lowercased() {
+        case "x": self = .X
+        case "y": self = .Y
+        case "a": self = .A
+        case "b": self = .B
+        default: return nil
+        }
+    }
+    
+    var label: String { rawValue }
 }
 
 class InputHandler {
@@ -23,7 +42,7 @@ class InputHandler {
         }
     }
     
-    func changeConfg(of button: Button, to command: Command) {
+    func changeConfig(of button: Button, to command: Command) {
         switch button {
         case .X: buttonX = command
         case .Y: buttonY = command
