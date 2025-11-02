@@ -8,4 +8,7 @@
 import Foundation
 
 // MARK: Command Pattern
-test_command_pattern()
+// test_command_pattern()
+
+// MARK: Flyweight Pattern
+testFlyweightPattern()
